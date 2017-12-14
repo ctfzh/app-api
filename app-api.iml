@@ -149,5 +149,6 @@
     <orderEntry type="library" name="Maven: com.google.zxing:core:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.funbox:alipay-sdk-java20170511115337-source:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.funbox:alipay-sdk-java20170511115337:1.1" level="project" />
+    <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache:2.8.3" level="project" />
   </component>
 </module>

@@ -8,9 +8,11 @@ import com.funbox.project.model.AppUser;
 import com.funbox.project.model.AppUserPhone;
 import com.funbox.project.service.AppUserPhoneService;
 import com.funbox.project.service.AppUserService;
+import com.funbox.project.service.EhcacheService;
 import com.funbox.project.utils.HttpClientUtil;
 import com.funbox.project.utils.RandomUtil;
 import com.funbox.project.utils.redis.RedisClientTemplate;
+import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,11 +37,11 @@ public class AppUserController {
     @Resource
     private AppUserService appUserService;
 
-    @Autowired
-    RedisClientTemplate redisClientTemplate;
-
     @Resource
     private AppUserPhoneService appUserPhoneService;
+
+    @Autowired
+    private EhcacheService ehcacheService;
 
     @PostMapping("/code")
     @Transactional
@@ -54,9 +56,9 @@ public class AppUserController {
             return ResultGenerator.genFailResult("手机号格式不正确");
         }
 
-        //预防短信轰炸  todo
-        if(redisClientTemplate.get(ProjectConstant.FUNBOX_APi+phone)!=null) {
-            Long sendTime = JSONObject.parseObject(redisClientTemplate.get(ProjectConstant.FUNBOX_APi + phone).toString()).getLong("sendTime");
+        //预防短信轰炸
+        if(ehcacheService.getCacheUserCode(phone)!=null) {
+            Long sendTime = ehcacheService.getCacheUserCode(phone).getLong("sendTime");
             Long s = (System.currentTimeMillis() - sendTime) / (1000 * 60);
             if (5 > s) {
                 return ResultGenerator.genFailResult("获取验证码次数过多");
@@ -77,7 +79,7 @@ public class AppUserController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("phoneCode",phoneCode);
         jsonObject.put("sendTime",System.currentTimeMillis());
-        redisClientTemplate.setnx(ProjectConstant.FUNBOX_APi+phone,jsonObject,5);
+        ehcacheService.setCacheUserCode(phone,jsonObject);
 
         return ResultGenerator.genSuccessResult("验证码发送成功:"+phoneCode);
     }
@@ -122,11 +124,11 @@ public class AppUserController {
             appUserPhoneService.save(appUserPhone);
         }
 
-        if(redisClientTemplate.get(ProjectConstant.FUNBOX_APi+phone)==null){
+        if(ehcacheService.getCacheUserCode(phone)==null){
             return  ResultGenerator.genFailResult("短信验证码超时，请从新获取验证码");
         }
 
-        String sessionPhoneCode = JSONObject.parseObject(redisClientTemplate.get(ProjectConstant.FUNBOX_APi+phone).toString()).getString("phoneCode");
+        String sessionPhoneCode = ehcacheService.getCacheUserCode(phone).getString("phoneCode");
         if(!sessionPhoneCode.equals(code)){
             return  ResultGenerator.genFailResult("短信验证码错误，登陆失败");
         }
