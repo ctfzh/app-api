@@ -9,9 +9,7 @@ import com.funbox.project.dao.oracle.AppUserPhoneMapper;
 import com.funbox.project.dao.oracle.*;
 import com.funbox.project.service.*;
 import com.funbox.project.utils.EncryptUtil;
-import com.funbox.project.utils.redis.RedisClientTemplate;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 
@@ -19,8 +17,6 @@ import javax.annotation.Resource;
  * Created by zhao6 on 2017/10/27.
  */
 public class TestDao extends Tester {
-    @Autowired
-    RedisClientTemplate redisClientTemplate;
 
     @Resource
     AppUserService appUserService;
@@ -102,14 +98,14 @@ public class TestDao extends Tester {
 
 //    @org.junit.TestDao
     public void TestRedis(){
-        Long sendTime = JSONObject.parseObject(redisClientTemplate.get(ProjectConstant.FUNBOX_APi + "15950081243").toString()).getLong("sendTime");
-        System.out.println("sendTime------>>>>>>>>>>>>"+sendTime);
-
-        System.out.println(redisClientTemplate.get(ProjectConstant.FUNBOX_APi + "15950081243"));
-        Long s = (System.currentTimeMillis() - sendTime) / (1000 * 60);
-        if (5 < s) {
-            System.out.println("------------------------验证码发送次数过多*******************");
-        }
+//        Long sendTime = JSONObject.parseObject(redisClientTemplate.get(ProjectConstant.FUNBOX_APi + "15950081243").toString()).getLong("sendTime");
+//        System.out.println("sendTime------>>>>>>>>>>>>"+sendTime);
+//
+//        System.out.println(redisClientTemplate.get(ProjectConstant.FUNBOX_APi + "15950081243"));
+//        Long s = (System.currentTimeMillis() - sendTime) / (1000 * 60);
+//        if (5 < s) {
+//            System.out.println("------------------------验证码发送次数过多*******************");
+//        }
 
     }
 

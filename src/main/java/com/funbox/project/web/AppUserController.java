@@ -11,8 +11,6 @@ import com.funbox.project.service.AppUserService;
 import com.funbox.project.service.EhcacheService;
 import com.funbox.project.utils.HttpClientUtil;
 import com.funbox.project.utils.RandomUtil;
-import com.funbox.project.utils.redis.RedisClientTemplate;
-import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
