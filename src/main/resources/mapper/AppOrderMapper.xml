@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppOrderMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppOrder">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ORDER_ID" jdbcType="DECIMAL" property="orderId" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+    <result column="ORDER_STATUS" jdbcType="DECIMAL" property="orderStatus" />
+    <result column="PAY_TYPE" jdbcType="DECIMAL" property="payType" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="NODE_ID" jdbcType="DECIMAL" property="nodeId" />
+    <result column="NODE_NAME" jdbcType="VARCHAR" property="nodeName" />
+    <result column="NODE_ADDRESS" jdbcType="VARCHAR" property="nodeAddress" />
+    <result column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+    <result column="MDSE_NAME" jdbcType="VARCHAR" property="mdseName" />
+    <result column="MDSE_NICKNAME" jdbcType="VARCHAR" property="mdseNickname" />
+    <result column="MDSE_SECOND_FOOD" jdbcType="VARCHAR" property="mdseSecondFood" />
+    <result column="MDSE_SUBGRID" jdbcType="VARCHAR" property="mdseSubgrid" />
+    <result column="MDSE_SMALLGRID" jdbcType="VARCHAR" property="mdseSmallgrid" />
+    <result column="MDSE_STAPLEFOOD" jdbcType="VARCHAR" property="mdseStaplefood" />
+    <result column="DISCOUNT_NAME" jdbcType="VARCHAR" property="discountName" />
+    <result column="SELLING_PRICE" jdbcType="DECIMAL" property="sellingPrice" />
+    <result column="APP_PRICE" jdbcType="DECIMAL" property="appPrice" />
+    <result column="PAY_PRICE" jdbcType="DECIMAL" property="payPrice" />
+    <result column="COUPON_ID" jdbcType="DECIMAL" property="couponId" />
+    <result column="COUPON_NAME" jdbcType="VARCHAR" property="couponName" />
+    <result column="FOOD_CODE" jdbcType="VARCHAR" property="foodCode" />
+    <result column="FOOD_DATE" jdbcType="DATE" property="foodDate" />
+    <result column="CL_CODE" jdbcType="VARCHAR" property="clCode" />
+    <result column="DISPOSE_LOG" jdbcType="VARCHAR" property="disposeLog" />
+    <result column="CREATED" jdbcType="DECIMAL" property="created" />
+    <result column="MODIFIED" jdbcType="DECIMAL" property="modified" />
+    <result column="DELIVERY_TIME" jdbcType="DECIMAL" property="deliveryTime" />
+    <result column="ISMERGED" jdbcType="DECIMAL" property="ismerged" />
+    <result column="MERGEDCODE" jdbcType="VARCHAR" property="mergedcode" />
+    <result column="ISEVALUATED" jdbcType="DECIMAL" property="isevaluated" />
+    <result column="ISGIFTED" jdbcType="DECIMAL" property="isgifted" />
+    <result column="ISINVOICED" jdbcType="DECIMAL" property="isinvoiced" />
+    <result column="MVCCC_ID" jdbcType="DECIMAL" property="mvcccId" />
+    <result column="CHANNEL" jdbcType="VARCHAR" property="channel" />
+    <result column="ISREFUND" jdbcType="VARCHAR" property="isrefund" />
+    <result column="REFUND_PRICE" jdbcType="DECIMAL" property="refundPrice" />
+    <result column="REFUND_COUPON" jdbcType="DECIMAL" property="refundCoupon" />
+    <result column="MONEY_COMPANY" jdbcType="DECIMAL" property="moneyCompany" />
+    <result column="MONEY_PERSON" jdbcType="DECIMAL" property="moneyPerson" />
+    <result column="MONEY_GIFT" jdbcType="DECIMAL" property="moneyGift" />
+  </resultMap>
+
+</mapper>

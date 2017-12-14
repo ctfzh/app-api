@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppVsNotifyMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppVsNotify">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="inner_code" jdbcType="VARCHAR" property="innerCode" />
+    <result column="notify_flag" jdbcType="VARCHAR" property="notifyFlag" />
+    <result column="main_order_id" jdbcType="INTEGER" property="mainOrderId" />
+    <result column="result" jdbcType="INTEGER" property="result" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="modified" jdbcType="INTEGER" property="modified" />
+    <result column="max_food_date" jdbcType="DATE" property="maxFoodDate" />
+    <result column="request_content" jdbcType="LONGVARCHAR" property="requestContent" />
+  </resultMap>
+</mapper>

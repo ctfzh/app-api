@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppInvoiceMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppInvoice">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="Invoicesum" jdbcType="INTEGER" property="invoicesum" />
+    <result column="InvoiceName" jdbcType="VARCHAR" property="invoicename" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="RealName" jdbcType="VARCHAR" property="realname" />
+    <result column="Mobileno" jdbcType="VARCHAR" property="mobileno" />
+    <result column="SendType" jdbcType="VARCHAR" property="sendtype" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="dutyNumber" jdbcType="INTEGER" property="dutynumber" />
+    <result column="companySelf" jdbcType="INTEGER" property="companyself" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="Order_ids" jdbcType="LONGVARCHAR" property="orderIds" />
+  </resultMap>
+</mapper>

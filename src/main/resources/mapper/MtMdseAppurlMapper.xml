@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtMdseAppurlMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtMdseAppurl">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="MA_ID" jdbcType="DECIMAL" property="maId" />
+    <result column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+    <result column="MDSE_NAME" jdbcType="VARCHAR" property="mdseName" />
+    <result column="APP_URL" jdbcType="VARCHAR" property="appUrl" />
+    <result column="PHOTO_TYPE" jdbcType="DECIMAL" property="photoType" />
+    <result column="URL_WEIGHT" jdbcType="DECIMAL" property="urlWeight" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="CREATE_USER" jdbcType="DECIMAL" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+    <result column="DELETE_USER" jdbcType="DECIMAL" property="deleteUser" />
+    <result column="DELETE_TIME" jdbcType="DATE" property="deleteTime" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtMerchandiseMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtMerchandise">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+    <result column="MDSE_TYPE_ID" jdbcType="DECIMAL" property="mdseTypeId" />
+    <result column="NAME_PY" jdbcType="VARCHAR" property="namePy" />
+    <result column="MDSE_NAME" jdbcType="VARCHAR" property="mdseName" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="IMG_URL" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CTIME" jdbcType="DATE" property="ctime" />
+    <result column="LOCK_MARK" jdbcType="DECIMAL" property="lockMark" />
+    <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
+    <result column="RECOMMEND" jdbcType="DECIMAL" property="recommend" />
+    <result column="UTOR" jdbcType="VARCHAR" property="utor" />
+    <result column="UTIME" jdbcType="DATE" property="utime" />
+    <result column="MDSE_COLOR" jdbcType="DECIMAL" property="mdseColor" />
+    <result column="COME_PRICE" jdbcType="DECIMAL" property="comePrice" />
+    <result column="OFFER_PRICE" jdbcType="DECIMAL" property="offerPrice" />
+    <result column="AUDIT_STATUS" jdbcType="DECIMAL" property="auditStatus" />
+    <result column="AUDITOR" jdbcType="VARCHAR" property="auditor" />
+    <result column="AUDITIME" jdbcType="DATE" property="auditime" />
+    <result column="MDSE_NICKNAME" jdbcType="VARCHAR" property="mdseNickname" />
+    <result column="MDSE_STAPLEFOOD" jdbcType="VARCHAR" property="mdseStaplefood" />
+    <result column="MDSE_SUBGRID" jdbcType="VARCHAR" property="mdseSubgrid" />
+    <result column="MDSE_SMALLGRID" jdbcType="VARCHAR" property="mdseSmallgrid" />
+    <result column="APP_WX_PRICE" jdbcType="DECIMAL" property="appWxPrice" />
+    <result column="APP_ZFB_PRICE" jdbcType="DECIMAL" property="appZfbPrice" />
+    <result column="APP_YL_PRICE" jdbcType="DECIMAL" property="appYlPrice" />
+    <result column="WX_PRICE" jdbcType="DECIMAL" property="wxPrice" />
+    <result column="ZFB_PRICE" jdbcType="DECIMAL" property="zfbPrice" />
+    <result column="YL_PRICE" jdbcType="DECIMAL" property="ylPrice" />
+    <result column="IMG_MD5" jdbcType="VARCHAR" property="imgMd5" />
+    <result column="ORG_ID" jdbcType="DECIMAL" property="orgId" />
+    <result column="MATERIAL_GROUP" jdbcType="VARCHAR" property="materialGroup" />
+    <result column="MATERIAL_CODE" jdbcType="VARCHAR" property="materialCode" />
+    <result column="BOX_LONG" jdbcType="DECIMAL" property="boxLong" />
+    <result column="BOX_WIDTH" jdbcType="DECIMAL" property="boxWidth" />
+    <result column="BOX_HIGH" jdbcType="DECIMAL" property="boxHigh" />
+    <result column="YE_PRICE" jdbcType="DECIMAL" property="yePrice" />
+    <result column="BT_TYPE" jdbcType="VARCHAR" property="btType" />
+    <result column="SHELF_LIFE" jdbcType="DECIMAL" property="shelfLife" />
+    <result column="SPACE_TYPE" jdbcType="VARCHAR" property="spaceType" />
+    <result column="RESERVE_PRICE" jdbcType="DECIMAL" property="reservePrice" />
+    <result column="STORAGE_ID" jdbcType="DECIMAL" property="storageId" />
+  </resultMap>
+</mapper>

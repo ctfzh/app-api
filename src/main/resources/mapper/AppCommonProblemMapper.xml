@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppCommonProblemMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppCommonProblem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="problem_id" jdbcType="INTEGER" property="problemId" />
+    <result column="problem_title" jdbcType="VARCHAR" property="problemTitle" />
+    <result column="problem_content" jdbcType="VARCHAR" property="problemContent" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="problem_order" jdbcType="VARCHAR" property="problemOrder" />
+  </resultMap>
+
+</mapper>

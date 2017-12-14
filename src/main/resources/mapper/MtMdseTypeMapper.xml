@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtMdseTypeMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtMdseType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="MDSE_TYPE_ID" jdbcType="DECIMAL" property="mdseTypeId" />
+    <result column="MDSE_TYPE_CODE" jdbcType="DECIMAL" property="mdseTypeCode" />
+    <result column="MDSE_TYPE_NAME" jdbcType="VARCHAR" property="mdseTypeName" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="TS" jdbcType="TIMESTAMP" property="ts" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="UTOR" jdbcType="VARCHAR" property="utor" />
+    <result column="UTIME" jdbcType="DATE" property="utime" />
+    <result column="TYPE_ICON" jdbcType="VARCHAR" property="typeIcon" />
+    <result column="TYPE_ORDER" jdbcType="DECIMAL" property="typeOrder" />
+  </resultMap>
+</mapper>

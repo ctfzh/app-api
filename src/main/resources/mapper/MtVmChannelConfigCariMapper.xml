@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtVmChannelConfigCariMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtVmChannelConfigCari">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="MVCCC_ID" jdbcType="DECIMAL" property="mvcccId" />
+    <result column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="TS" jdbcType="TIMESTAMP" property="ts" />
+    <result column="CL_CODE" jdbcType="VARCHAR" property="clCode" />
+    <result column="CARI_CODE" jdbcType="VARCHAR" property="cariCode" />
+    <result column="VALID_TS" jdbcType="DATE" property="validTs" />
+    <result column="CARI_STATUS" jdbcType="VARCHAR" property="cariStatus" />
+    <result column="SALE_TIME" jdbcType="DATE" property="saleTime" />
+    <result column="CTS" jdbcType="TIMESTAMP" property="cts" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="IS_SYNC" jdbcType="DECIMAL" property="isSync" />
+    <result column="SYNC_DATE" jdbcType="TIMESTAMP" property="syncDate" />
+    <result column="LOCK_TIME" jdbcType="DATE" property="lockTime" />
+    <result column="PC_TYPE" jdbcType="VARCHAR" property="pcType" />
+    <result column="VT_ID" jdbcType="DECIMAL" property="vtId" />
+    <result column="ORDER_ID" jdbcType="VARCHAR" property="orderId" />
+    <result column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+  </resultMap>
+  <resultMap id="CodeResultMap" type="com.funbox.project.bean.Code">
+    <id column="MVCCC_ID" jdbcType="DECIMAL" property="mvcccId" />
+    <result column="CL_CODE" jdbcType="VARCHAR" property="clCode" />
+    <result column="CARI_CODE" jdbcType="VARCHAR" property="cariCode" />
+    <result column="CARI_STATUS" jdbcType="VARCHAR" property="cariStatus" />
+    <result column="VALID_DATE" jdbcType="VARCHAR" property="validDate" />
+    <result column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+  </resultMap>
+  <select id="selectCodeByInnerCodeandvalidTs" resultMap="CodeResultMap">
+     select mc.mvccc_id, mc.cl_code,mv.mdse_id, mc.cari_code, mc.cari_status,to_char(mc.VALID_TS, 'YYYY-MM-DD') valid_date
+  from mt_vm_channel_config_cari mc,mt_vm_channel_config_info mv
+  where mc.vm_id=mv.vm_id
+    and mc.cl_code=mv.cl_code
+    and mc.pc_type=mv.pc_type
+    and mc.valid_ts=mv.valid_ts
+    and mc.INNER_CODE =#{innerCode,jdbcType=VARCHAR}
+    and cari_status=0
+    and to_char(mc.VALID_TS, 'YYYY-MM-DD') in
+    <foreach item="item" index="index" collection="validTslist" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    order by mc.VALID_TS
+  </select>
+</mapper>

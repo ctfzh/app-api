@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtVmMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtVm">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="VT_ID" jdbcType="DECIMAL" property="vtId" />
+    <result column="VM_MODEL_ID" jdbcType="DECIMAL" property="vmModelId" />
+    <result column="VM_CLAYERS" jdbcType="DECIMAL" property="vmClayers" />
+    <result column="SP_QTY" jdbcType="DECIMAL" property="spQty" />
+    <result column="CHANNEL_QTY" jdbcType="DECIMAL" property="channelQty" />
+    <result column="SP_SUPPORT" jdbcType="DECIMAL" property="spSupport" />
+    <result column="TOUCH_SUPPORT" jdbcType="DECIMAL" property="touchSupport" />
+    <result column="PRINTER_SUPPORT" jdbcType="DECIMAL" property="printerSupport" />
+    <result column="POS_SUPPORT" jdbcType="DECIMAL" property="posSupport" />
+    <result column="RTGY_SUPPORT" jdbcType="DECIMAL" property="rtgySupport" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="CAMERA_SUPPORT" jdbcType="DECIMAL" property="cameraSupport" />
+    <result column="CC_SUPPORT" jdbcType="DECIMAL" property="ccSupport" />
+    <result column="NODE_ID" jdbcType="DECIMAL" property="nodeId" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CTIME" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="VM_HARD_SEQ" jdbcType="VARCHAR" property="vmHardSeq" />
+    <result column="COIN_DEVICE_SUPPORT" jdbcType="DECIMAL" property="coinDeviceSupport" />
+    <result column="NOTE_DEVICE_SUPPORT" jdbcType="DECIMAL" property="noteDeviceSupport" />
+    <result column="ACOUSTIC_WAVE_SUPPORT" jdbcType="DECIMAL" property="acousticWaveSupport" />
+    <result column="CHECKER_BOARD_SUPPORT" jdbcType="DECIMAL" property="checkerBoardSupport" />
+    <result column="QR_PAY_TYPE" jdbcType="DECIMAL" property="qrPayType" />
+    <result column="I_TYPE" jdbcType="DECIMAL" property="iType" />
+    <result column="CHANNEL_TYPE" jdbcType="VARCHAR" property="channelType" />
+    <result column="UTOR" jdbcType="VARCHAR" property="utor" />
+    <result column="UTIME" jdbcType="DATE" property="utime" />
+    <result column="STORAGE_ID" jdbcType="DECIMAL" property="storageId" />
+  </resultMap>
+  <resultMap id="MvnResultMap" type="com.funbox.project.bean.MtVmNode">
+    <id column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="VT_ID" jdbcType="DECIMAL" property="vtId" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="NODE_ID" jdbcType="DECIMAL" property="nodeId" />
+    <result column="NODE_NAME" jdbcType="VARCHAR" property="nodeName" />
+    <result column="NODE_ADDRESS" jdbcType="VARCHAR" property="nodeAddress" />
+    <result column="LONGITUDE" jdbcType="VARCHAR" property="longitude" />
+    <result column="DIMENSIONS" jdbcType="VARCHAR" property="dimensions" />
+  </resultMap>
+  <select id="selectByInnerCode" resultMap="MvnResultMap" parameterType="java.lang.String" >
+    select mv.vm_id,
+       mv.vt_id,
+       mv.inner_code,
+       mn.node_id,
+       mn.node_name,
+       mn.node_address,
+       mn.longitude,
+       mn.dimensions
+  from mt_node mn, mt_vm mv, mt_vm_prop mp
+ where mn.node_id = mv.node_id
+   and mv.vm_id = mp.vm_id
+   and mp.AVAILABLE = 1
+   and mv.delete_mark = 0
+   and mv.inner_code =#{innerCode,jdbcType=VARCHAR}
+  </select>
+</mapper>

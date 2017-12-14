@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtVmChannelConfigInfoMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtVmChannelConfigInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="VCCI_ID" jdbcType="DECIMAL" property="vcciId" />
+    <result column="NODE_ID" jdbcType="DECIMAL" property="nodeId" />
+    <result column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="CL_CODE" jdbcType="VARCHAR" property="clCode" />
+    <result column="TOTAL_NUM" jdbcType="DECIMAL" property="totalNum" />
+    <result column="REPLEN_NUM" jdbcType="DECIMAL" property="replenNum" />
+    <result column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+    <result column="MDSE_NAME" jdbcType="VARCHAR" property="mdseName" />
+    <result column="VALID_TS" jdbcType="TIMESTAMP" property="validTs" />
+    <result column="SYNC_TS" jdbcType="TIMESTAMP" property="syncTs" />
+    <result column="IS_SYNC" jdbcType="DECIMAL" property="isSync" />
+    <result column="COME_PRICE" jdbcType="DECIMAL" property="comePrice" />
+    <result column="OFFER_PRICE" jdbcType="DECIMAL" property="offerPrice" />
+    <result column="REAL_PRICE" jdbcType="DECIMAL" property="realPrice" />
+    <result column="CONF_STATUS" jdbcType="DECIMAL" property="confStatus" />
+    <result column="REPLENISH_STATUS" jdbcType="CHAR" property="replenishStatus" />
+    <result column="CURR_NUM" jdbcType="DECIMAL" property="currNum" />
+    <result column="CL_COLOR" jdbcType="VARCHAR" property="clColor" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CREATIME" jdbcType="DATE" property="creatime" />
+    <result column="UTOR" jdbcType="VARCHAR" property="utor" />
+    <result column="UTIME" jdbcType="DATE" property="utime" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="PC_TYPE" jdbcType="VARCHAR" property="pcType" />
+    <result column="DAY_TITLE" jdbcType="VARCHAR" property="dayTitle" />
+    <result column="SUCC_NUM" jdbcType="DECIMAL" property="succNum" />
+    <result column="APP_WX_PRICE" jdbcType="DECIMAL" property="appWxPrice" />
+    <result column="APP_ZFB_PRICE" jdbcType="DECIMAL" property="appZfbPrice" />
+    <result column="APP_YL_PRICE" jdbcType="DECIMAL" property="appYlPrice" />
+    <result column="WX_PRICE" jdbcType="DECIMAL" property="wxPrice" />
+    <result column="ZFB_PRICE" jdbcType="DECIMAL" property="zfbPrice" />
+    <result column="YL_PRICE" jdbcType="DECIMAL" property="ylPrice" />
+    <result column="YE_PRICE" jdbcType="DECIMAL" property="yePrice" />
+    <result column="REAL_RELEN_NUM" jdbcType="DECIMAL" property="realRelenNum" />
+    <result column="REPLEN_USER" jdbcType="VARCHAR" property="replenUser" />
+    <result column="REPLEN_TIME" jdbcType="DATE" property="replenTime" />
+    <result column="SHELF_LIFE" jdbcType="DECIMAL" property="shelfLife" />
+    <result column="CONF_TYPE" jdbcType="VARCHAR" property="confType" />
+    <result column="RESERVE_PRICE" jdbcType="DECIMAL" property="reservePrice" />
+  </resultMap>
+  <resultMap id="MenuResultMap" type="com.funbox.project.bean.Menu">
+    <id column="MDSE_ID" jdbcType="DECIMAL" property="mdseId" />
+    <result column="OFFER_PRICE" jdbcType="DECIMAL" property="offerPrice" />
+    <result column="COME_PRICE" jdbcType="DECIMAL" property="comePrice" />
+    <result column="REAL_PRICE" jdbcType="DECIMAL" property="realPrice" />
+    <result column="VALID_DATE" jdbcType="VARCHAR" property="valiDate" />
+    <result column="MDSE_NAME" jdbcType="VARCHAR" property="mdseName" />
+    <result column="TOTAL_NUM" jdbcType="DECIMAL" property="totalNum" />
+    <result column="SURPLUS_SUM" jdbcType="DECIMAL" property="surplusSum" />
+    <result column="DAY_TITLE" jdbcType="VARCHAR" property="dayTitle" />
+    <result column="MDSE_NICKNAME" jdbcType="VARCHAR" property="mdseNickname" />
+    <result column="MDSE_STAPLEFOOD" jdbcType="VARCHAR" property="mdseStaplefood" />
+    <result column="MDSE_SUBGRID" jdbcType="VARCHAR" property="mdseSubgrid" />
+    <result column="MDSE_SMALLGRID" jdbcType="VARCHAR" property="mdseSmallgrid" />
+    <result column="APP_WX_PRICE" jdbcType="DECIMAL" property="appWxPrice" />
+    <result column="APP_ZFB_PRICE" jdbcType="DECIMAL" property="appZfbPrice" />
+    <result column="APP_YL_PRICE" jdbcType="DECIMAL" property="appYlPrice" />
+    <result column="WX_PRICE" jdbcType="DECIMAL" property="wxPrice" />
+    <result column="YE_PRICE" jdbcType="DECIMAL" property="yePrice" />
+    <result column="RESERVE_PRICE" jdbcType="DECIMAL" property="reservePrice" />
+    <result column="MDSE_TYPE_NAME" jdbcType="VARCHAR" property="mdseTypeName" />
+    <result column="TYPE_ICON" jdbcType="VARCHAR" property="typeIcon" />
+    <result column="TYPE_ORDER" jdbcType="DECIMAL" property="typeOrder" />
+  </resultMap>
+
+  <select id="selectMenusByInnerCode" resultMap="MenuResultMap" parameterType="java.lang.String" >
+    select t1.offer_price,
+    t1.come_price,
+    t1.real_price,
+    t1.valid_date,
+    t1.mdse_id,
+    t1.mdse_name,
+    t1.total_num,
+    case
+    when t1.replen_num=0 and t1.total_num=0 then
+    0
+   <![CDATA[ when t1.replen_num <= 0 and ]]>
+    (sysdate between
+    to_date(t1.valid_date || ' 11:00:00', 'yyyy-mm-dd hh24:mi:ss') and
+    to_date(t1.valid_date || ' 23:59:59', 'yyyy-mm-dd hh24:mi:ss')) then
+    -1
+    when t1.curr_num - t2.cari_num &lt;  0 then
+    0
+    else
+    (t1.curr_num - t2.cari_num)
+    end surplus_sum,
+    t1.day_title,
+    t1.mdse_nickname,
+    t1.mdse_staplefood,
+    t1.mdse_subgrid,
+    t1.mdse_smallgrid,
+    t1.app_wx_price,
+    t1.app_zfb_price,
+    t1.app_yl_price,
+    t1.wx_price,
+    t1.ye_price,
+    t1.reserve_price,
+    t1.MDSE_TYPE_NAME,
+    t1.TYPE_ICON,
+    t1.type_order
+    from (select mc.offer_price,
+    mc.come_price,
+    mc.real_price,
+    mc.vm_id,
+    to_char(mc.valid_ts, 'YYYY-MM-DD') valid_date,
+    mc.mdse_id,
+    mc.mdse_name,
+    sum(decode(mv.cs, 0, mc.total_num, 0)) total_num,
+    sum(decode(mc.conf_status,0,nvl(mc.replen_num, 0),decode(mv.cs, 0, mc.total_num, 0))) replen_num,
+    sum(decode(mc.conf_status,0,decode(mv.cs, 0, mc.curr_num, 0),0)) curr_num,
+    mc.day_title,
+    mm.mdse_nickname,
+    mm.mdse_staplefood,
+    mm.mdse_subgrid,
+    mm.mdse_smallgrid,
+    mc.app_wx_price,
+    mc.app_zfb_price,
+    mc.app_yl_price,
+    mc.wx_price,
+    mc.ye_price,
+    mc.reserve_price,
+    mm.MATERIAL_CODE,mt.MDSE_TYPE_NAME,mt.TYPE_ICON,mt.type_order
+    from mt_vm_channel_config_info mc,
+    mt_vm_channel             mv,
+    mt_merchandise            mm,
+    mt_mdse_type              mt,
+    mt_vm_prop                mp
+    where mc.mdse_id = mm.mdse_id
+    and mc.vm_id = mp.vm_id
+    and mc.vm_id = mv.vm_id
+    and mc.cl_code = mv.cl_code
+    and mc.pc_type = mv.pc_type
+    and mc.conf_type!=2
+    and mm.mdse_type_id=mt.mdse_type_id(+)
+   <![CDATA[  and mc.valid_ts >= trunc(sysdate) ]]>
+    and mc.inner_code =#{innerCode,jdbcType=VARCHAR}
+    group by mc.offer_price,
+    mc.come_price,
+    mc.real_price,
+    mc.vm_id,
+    to_char(mc.valid_ts, 'YYYY-MM-DD'),
+    mc.valid_ts,
+    mp.sale_etime,
+    mp.sale_btime,
+    mc.mdse_id,
+    mc.mdse_name,
+    mc.day_title,
+    mm.mdse_nickname,
+    mm.mdse_staplefood,
+    mm.mdse_subgrid,
+    mm.mdse_smallgrid,
+    mc.app_wx_price,
+    mc.app_zfb_price,
+    mc.app_yl_price,
+    mc.wx_price,
+    mc.ye_price,
+    mc.reserve_price,
+    mm.MATERIAL_CODE,mt.MDSE_TYPE_NAME,mt.TYPE_ICON,mt.type_order) t1,
+    (select mi.vm_id,
+    to_char(ma.valid_ts, 'YYYY-MM-DD') valid_date,
+    mi.mdse_id,
+    mi.mdse_name,
+    sum(decode(ma.cari_status, '1', 1, '3', 1, '4', 1, 0)) cari_num
+    from mt_vm_channel_config_info mi, mt_vm_channel_config_cari ma
+    where mi.vm_id = ma.vm_id
+    and mi.cl_code = ma.cl_code
+    and mi.pc_type = ma.pc_type
+    and mi.valid_ts = ma.valid_ts
+    and mi.conf_type!=2
+    <![CDATA[and ma.valid_ts >= trunc(sysdate)]]>
+    and mi.inner_code =#{innerCode,jdbcType=VARCHAR}
+    and ma.inner_code =#{innerCode,jdbcType=VARCHAR}
+    group by mi.vm_id,
+    to_char(ma.valid_ts, 'YYYY-MM-DD'),
+    mi.mdse_id,
+    mi.mdse_name) t2
+    where t1.vm_id = t2.vm_id
+    and t1.valid_date = t2.valid_date
+    and t1.mdse_id = t2.mdse_id
+    and t1.mdse_name = t2.mdse_name
+    order by t1.valid_date,8 desc,to_number(t1.MATERIAL_CODE)
+  </select>
+
+</mapper>

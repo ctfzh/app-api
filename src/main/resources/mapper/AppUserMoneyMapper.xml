@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppUserMoneyMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppUserMoney">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="modified" jdbcType="TIMESTAMP" property="modified" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.MtVmPropMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtVmProp">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="VF_ID" jdbcType="DECIMAL" property="vfId" />
+    <result column="VM_ONLY_CODE" jdbcType="VARCHAR" property="vmOnlyCode" />
+    <result column="VM_HEIGHT" jdbcType="DECIMAL" property="vmHeight" />
+    <result column="VM_WIDTH" jdbcType="DECIMAL" property="vmWidth" />
+    <result column="VM_LONG" jdbcType="DECIMAL" property="vmLong" />
+    <result column="VM_RUN_TYPE" jdbcType="DECIMAL" property="vmRunType" />
+    <result column="FACTORY_CTIME" jdbcType="DATE" property="factoryCtime" />
+    <result column="PRINTER_STATUS" jdbcType="VARCHAR" property="printerStatus" />
+    <result column="POS_STATUS" jdbcType="VARCHAR" property="posStatus" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="CS" jdbcType="VARCHAR" property="cs" />
+    <result column="LVM_NAME" jdbcType="VARCHAR" property="lvmName" />
+    <result column="LVM_PASSWORD" jdbcType="VARCHAR" property="lvmPassword" />
+    <result column="IS_TEST_VM" jdbcType="DECIMAL" property="isTestVm" />
+    <result column="CAMERA_STATUS" jdbcType="VARCHAR" property="cameraStatus" />
+    <result column="CC_STATUS" jdbcType="VARCHAR" property="ccStatus" />
+    <result column="AVAILABLE" jdbcType="DECIMAL" property="available" />
+    <result column="ORG_ID" jdbcType="DECIMAL" property="orgId" />
+    <result column="SYNC_MARK" jdbcType="DECIMAL" property="syncMark" />
+    <result column="PLAY_LIST" jdbcType="VARCHAR" property="playList" />
+    <result column="CVC_VERSION" jdbcType="VARCHAR" property="cvcVersion" />
+    <result column="CVPN_VRESION" jdbcType="VARCHAR" property="cvpnVresion" />
+    <result column="OPERATOR" jdbcType="VARCHAR" property="operator" />
+    <result column="TS" jdbcType="TIMESTAMP" property="ts" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="LSYNC_TS" jdbcType="TIMESTAMP" property="lsyncTs" />
+    <result column="RESOLUTION" jdbcType="VARCHAR" property="resolution" />
+    <result column="SIM_CODE" jdbcType="VARCHAR" property="simCode" />
+    <result column="INNER_CODE" jdbcType="VARCHAR" property="innerCode" />
+    <result column="LP_CREATOR" jdbcType="VARCHAR" property="lpCreator" />
+    <result column="LP_CTIME" jdbcType="TIMESTAMP" property="lpCtime" />
+    <result column="LP_OPERATOR" jdbcType="VARCHAR" property="lpOperator" />
+    <result column="LP_TS" jdbcType="TIMESTAMP" property="lpTs" />
+    <result column="FORCE_SOFT" jdbcType="DECIMAL" property="forceSoft" />
+    <result column="OPERATING_SYSTEM" jdbcType="VARCHAR" property="operatingSystem" />
+    <result column="ISO_VERSION" jdbcType="VARCHAR" property="isoVersion" />
+    <result column="DEVICE_INFO_ID" jdbcType="DECIMAL" property="deviceInfoId" />
+    <result column="VMC_VERSION" jdbcType="VARCHAR" property="vmcVersion" />
+    <result column="COINS_LIMIT" jdbcType="VARCHAR" property="coinsLimit" />
+    <result column="VIRTUAL_PRICE" jdbcType="DECIMAL" property="virtualPrice" />
+    <result column="VMC_VERSON" jdbcType="VARCHAR" property="vmcVerson" />
+    <result column="VMC_SOFT_VERSON" jdbcType="VARCHAR" property="vmcSoftVerson" />
+    <result column="VMC_SOFT_VERSION" jdbcType="VARCHAR" property="vmcSoftVersion" />
+    <result column="MDSE_LIMIT" jdbcType="DECIMAL" property="mdseLimit" />
+    <result column="SALE_BTIME" jdbcType="VARCHAR" property="saleBtime" />
+    <result column="SALE_ETIME" jdbcType="VARCHAR" property="saleEtime" />
+    <result column="PARTNER_ID" jdbcType="DECIMAL" property="partnerId" />
+    <result column="OP_PASSWORD" jdbcType="VARCHAR" property="opPassword" />
+    <result column="BS_BEGIN" jdbcType="VARCHAR" property="bsBegin" />
+    <result column="BS_END" jdbcType="VARCHAR" property="bsEnd" />
+  </resultMap>
+</mapper>

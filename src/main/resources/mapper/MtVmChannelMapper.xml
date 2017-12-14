@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.oracle.MtVmChannelMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.MtVmChannel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="CL_ID" jdbcType="DECIMAL" property="clId" />
+    <result column="VM_ID" jdbcType="DECIMAL" property="vmId" />
+    <result column="CL_CODE" jdbcType="VARCHAR" property="clCode" />
+    <result column="CS" jdbcType="VARCHAR" property="cs" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="DELETE_MARK" jdbcType="DECIMAL" property="deleteMark" />
+    <result column="LSYNC_TS" jdbcType="TIMESTAMP" property="lsyncTs" />
+    <result column="C_LONG" jdbcType="DECIMAL" property="cLong" />
+    <result column="C_WIDTH" jdbcType="DECIMAL" property="cWidth" />
+    <result column="C_HEIGHT" jdbcType="DECIMAL" property="cHeight" />
+    <result column="SYNC_MARK" jdbcType="DECIMAL" property="syncMark" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="CTIME" jdbcType="TIMESTAMP" property="ctime" />
+    <result column="T_CAPACITY" jdbcType="DECIMAL" property="tCapacity" />
+    <result column="VM_CLAYERS" jdbcType="DECIMAL" property="vmClayers" />
+    <result column="IS_WEAL_MDSE" jdbcType="DECIMAL" property="isWealMdse" />
+    <result column="GUID" jdbcType="DECIMAL" property="guid" />
+    <result column="CL_COLOR" jdbcType="VARCHAR" property="clColor" />
+    <result column="UTOR" jdbcType="VARCHAR" property="utor" />
+    <result column="UTIME" jdbcType="DATE" property="utime" />
+    <result column="PC_TYPE" jdbcType="VARCHAR" property="pcType" />
+    <result column="BT_TYPE" jdbcType="VARCHAR" property="btType" />
+    <result column="SEALS_TYPE" jdbcType="DECIMAL" property="sealsType" />
+    <result column="SPACE_TYPE" jdbcType="VARCHAR" property="spaceType" />
+  </resultMap>
+</mapper>

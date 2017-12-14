@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.funbox.project.dao.mysql.AppActivityMapper">
+  <resultMap id="BaseResultMap" type="com.funbox.project.model.AppActivity">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="created" jdbcType="INTEGER" property="created" />
+    <result column="modified" jdbcType="INTEGER" property="modified" />
+    <result column="author" jdbcType="INTEGER" property="author" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+    <result column="is_valid" jdbcType="INTEGER" property="isValid" />
+    <result column="sort_num" jdbcType="INTEGER" property="sortNum" />
+  </resultMap>
+</mapper>
