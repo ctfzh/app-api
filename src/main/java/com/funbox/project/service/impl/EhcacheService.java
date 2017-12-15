@@ -1,7 +1,6 @@
-package com.funbox.project.service;
+package com.funbox.project.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.funbox.project.core.ProjectConstant;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
