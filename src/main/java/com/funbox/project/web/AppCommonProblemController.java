@@ -36,8 +36,9 @@ public class AppCommonProblemController {
         // 最后的结果
         List<AppCommonProblemBean> appCommonProblemList = new ArrayList<AppCommonProblemBean>();
         // 先找到所有的一级问题
-        AppCommonProblemBean appCommonProblemBean = new AppCommonProblemBean();
+        AppCommonProblemBean appCommonProblemBean;
         for (int i = 0; i < list.size(); i++) {
+            appCommonProblemBean = new AppCommonProblemBean();
             // 一级问题没有parentId
             if (StringUtils.isBlank(list.get(i).getParentId())) {
                 //复制属性值
