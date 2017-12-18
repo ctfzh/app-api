@@ -1,3 +1,8 @@
+发布信息：
+APP java API  web3  101.201.102.49  10.25.113.172  18280  api3.sanquanxianshi.com  赵勇
+
+
+
 ![Licence](https://img.shields.io/badge/licence-none-green.svg)
 [![GitHub Release](https://img.shields.io/github/release/lihengming/spring-boot-api-project-seed.svg)](https://github.com/lihengming/spring-boot-api-project-seed/releases)
 ## 简介
