@@ -1,6 +1,6 @@
 package com.funbox.project.service.impl;
 
-import com.funbox.project.dao.AppUpgradesVersionMapper;
+import com.funbox.project.dao.mysql.AppUpgradesVersionMapper;
 import com.funbox.project.model.AppUpgradesVersion;
 import com.funbox.project.service.AppUpgradesVersionService;
 import com.funbox.project.core.AbstractService;
