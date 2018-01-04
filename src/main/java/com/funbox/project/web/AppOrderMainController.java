@@ -92,8 +92,11 @@ public class AppOrderMainController {
 
         Condition condition2=new Condition(AppOrder.class);
         condition2.createCriteria().andCondition("parent_id in ("+sb.toString()+")");
-        if("4".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)){
-            condition2.and().andCondition( "food_date ='"+ DateUtils.dateToString(new Date())+"'" + "and isRefund='no' ");
+        if(!"0".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)) {
+            condition1.and().andCondition("order_status=" + orderStatus);
+        }
+        if("4".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)) {
+            condition1.and().andCondition("order_status!=7");
         }
         condition2.orderBy("foodDate").desc();
         List<AppOrder> appOrderList = appOrderService.findByCondition(condition2);
@@ -183,8 +186,11 @@ public class AppOrderMainController {
 
         Condition condition1=new Condition(AppOrderMain.class);
         condition1.createCriteria().andCondition("user_id ="+userId);
-        if((!"0".equals(orderStatus)||!"4".equals(orderStatus))&&StringUtils.isNotBlank(orderStatus)) {
+        if(!"0".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)) {
             condition1.and().andCondition("order_status=" + orderStatus);
+        }
+        if("4".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)) {
+            condition1.and().andCondition("order_status!=7");
         }
 
         condition1.orderBy("id").desc();
