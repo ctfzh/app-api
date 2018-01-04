@@ -17,10 +17,7 @@ import com.github.pagehelper.PageInfo;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
 
 import javax.annotation.Resource;
@@ -212,6 +209,64 @@ public class AppOrderMainController {
         if("4".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)){
             condition2.and().andCondition( "food_date ='"+ DateUtils.dateToString(new Date())+"'" + "and isRefund='no' ");
         }
+        condition2.orderBy("foodDate").desc();
+        List<AppOrder> appOrderList = appOrderService.findByCondition(condition2);
+
+        //根据一级主订单遍历下面的子订单
+        for(Iterator iter = list.iterator(); iter.hasNext();){
+            Object object = iter.next();
+            AppOrderMain appOrderMain =  (AppOrderMain)object;
+            List<AppOrder> newAppOrderList = appOrderList.stream().filter(s->s.getParentId().equals(appOrderMain.getId())).collect(Collectors.toList());
+
+            Map<Date, List<AppOrder>> groupBy = newAppOrderList.stream().collect(Collectors.groupingBy(AppOrder::getFoodDate));
+            List<List<AppOrder>> appOrderLists = new ArrayList<>();
+            for (Date key : groupBy.keySet()) {
+                appOrderLists.add(groupBy.get(key));
+            }
+
+
+            appOrderMain.setOrderList(appOrderLists);
+            if(appOrderLists==null||appOrderLists.size()==0){
+                iter.remove();
+            }
+
+            if(list==null) break;
+        }
+
+        PageInfo pageInfo = new PageInfo(list);
+        return ResultGenerator.genSuccessResult(pageInfo);
+    }
+
+    /**
+     * 根据订单号查询可退订的订单订单
+     * @param orderNo
+     * @return
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
+    @PostMapping("{orderNo}/list")
+    public Result listByOrderNo(@PathVariable("orderNo") String orderNo) throws InvocationTargetException, IllegalAccessException {
+        if(StringUtils.isBlank(orderNo)){
+            return  ResultGenerator.genFailResult("orderNo为空");
+        }
+
+        Condition condition1=new Condition(AppOrderMain.class);
+        condition1.createCriteria().andCondition("id ="+orderNo);
+        List<AppOrderMain> list = appOrderMainService.findByCondition(condition1);
+
+        if(list==null||list.size()==0){
+            return  ResultGenerator.genFailResult("未查到orderNo为："+orderNo+" 的数据");
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(AppOrderMain appOrderMain : list){
+            sb.append(appOrderMain.getId()).append(",");
+        }
+        sb.delete(sb.length() - 1, sb.length());
+
+        Condition condition2=new Condition(AppOrder.class);
+        condition2.createCriteria().andCondition("parent_id in ("+sb.toString()+")");
+        condition2.and().andCondition( "food_date >='"+ DateUtils.dateToString(new Date())+"'" + "and isRefund='no' ");
         condition2.orderBy("foodDate").desc();
         List<AppOrder> appOrderList = appOrderService.findByCondition(condition2);
 
