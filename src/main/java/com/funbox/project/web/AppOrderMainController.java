@@ -207,7 +207,7 @@ public class AppOrderMainController {
         Condition condition2=new Condition(AppOrder.class);
         condition2.createCriteria().andCondition("parent_id in ("+sb.toString()+")");
         if("4".equals(orderStatus)&&StringUtils.isNotBlank(orderStatus)){
-            condition2.and().andCondition( "food_date ='"+ DateUtils.dateToString(new Date())+"'" + "and isRefund='no' ");
+            condition2.and().andCondition( "food_date ='"+ DateUtils.dateToString(new Date())+"'" + "and isRefund='no' and  order_status!=3" );
         }
         condition2.orderBy("foodDate").desc();
         List<AppOrder> appOrderList = appOrderService.findByCondition(condition2);
