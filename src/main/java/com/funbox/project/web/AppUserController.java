@@ -9,14 +9,12 @@ import com.funbox.project.service.AppUserPhoneService;
 import com.funbox.project.service.AppUserService;
 import com.funbox.project.service.impl.EhcacheService;
 import com.funbox.project.utils.HttpClientUtil;
+import com.funbox.project.utils.MD5Util;
 import com.funbox.project.utils.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -113,6 +111,7 @@ public class AppUserController {
             appUser.setUserId(userId);
             appUser.setUsername(phone);
             appUser.setFlag(1);//手机注册为1
+            appUser.setPasswd(MD5Util.MD5Encode(phone,"utf-8"));
             appUser.setCreated(Integer.parseInt(System.currentTimeMillis() / 1000L + ""));
             appUserService.save(appUser);
 
@@ -140,6 +139,38 @@ public class AppUserController {
         }else{
             return ResultGenerator.genSuccessResult(user1);
         }
+    }
+
+    @PostMapping("/register")
+    @Transactional
+    public  Result register(@RequestParam String phone){
+        try {
+            AppUser user =  appUserService.findBy("username",phone);
+            if (null == user) {
+                Integer userId = appUserService.getUserId();
+                AppUser appUser = new AppUser();
+                appUser.setUserId(userId);
+                appUser.setUsername(phone);
+                appUser.setPasswd(MD5Util.MD5Encode(phone,"utf-8"));
+                appUser.setFlag(1);//手机注册为1
+                appUser.setCreated(Integer.parseInt(System.currentTimeMillis() / 1000L + ""));
+                appUserService.save(appUser);
+
+                AppUserPhone appUserPhone = new AppUserPhone();
+                appUserPhone.setId(appUserPhoneService.getAppUserPhoneId());
+                appUserPhone.setPhone(phone);
+                appUserPhone.setCreated(Integer.parseInt(System.currentTimeMillis() / 1000L + ""));
+                appUserPhone.setUserId(appUser.getUserId());
+                appUserPhoneService.save(appUserPhone);
+            }else{
+             return  ResultGenerator.genFailResult("已经注册");
+            }
+        }catch (Exception e){
+          return ResultGenerator.genFailResult(e.getMessage());
+        }
+
+        return ResultGenerator.genSuccessResult();
+
     }
 
 }
