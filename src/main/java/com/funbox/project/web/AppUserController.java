@@ -143,11 +143,10 @@ public class AppUserController {
 
     @PostMapping("/register")
     @Transactional
-    public  Result register(@RequestParam String phone){
+    public  Result register(@RequestParam String phone,int userId){
         try {
             AppUser user =  appUserService.findBy("username",phone);
             if (null == user) {
-                Integer userId = appUserService.getUserId();
                 AppUser appUser = new AppUser();
                 appUser.setUserId(userId);
                 appUser.setUsername(phone);
