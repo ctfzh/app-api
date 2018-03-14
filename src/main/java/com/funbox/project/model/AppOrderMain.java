@@ -31,8 +31,8 @@ public class AppOrderMain {
     @Column(name = "PAY_TYPE")
     private BigDecimal payType;
 
-    @Column(name = "ORDERS_INFO")
-    private String ordersInfo;
+//    @Column(name = "ORDERS_INFO")
+//    private String ordersInfo;
 
     @Column(name = "SELLING_PRICE")
     private BigDecimal sellingPrice;
@@ -192,16 +192,16 @@ public class AppOrderMain {
     /**
      * @return ORDERS_INFO
      */
-    public String getOrdersInfo() {
-        return ordersInfo;
-    }
-
-    /**
-     * @param ordersInfo
-     */
-    public void setOrdersInfo(String ordersInfo) {
-        this.ordersInfo = ordersInfo;
-    }
+//    public String getOrdersInfo() {
+//        return ordersInfo;
+//    }
+//
+//    /**
+//     * @param ordersInfo
+//     */
+//    public void setOrdersInfo(String ordersInfo) {
+//        this.ordersInfo = ordersInfo;
+//    }
 
     /**
      * @return SELLING_PRICE
