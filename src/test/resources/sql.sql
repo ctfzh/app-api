@@ -29,3 +29,5 @@ CREATE TABLE `app_common_problem` (
 ALTER TABLE `sanquan`.`app_invoice` ADD COLUMN `dutyNumber` INT(15) NULL COMMENT '税号';
 ALTER TABLE `sanquan`.`app_invoice` ADD COLUMN `companySelf` INT(1) NULL COMMENT '0：公司 1：个人';
 ALTER TABLE `sanquan`.`app_invoice` ADD COLUMN `area` VARCHAR(20) NULL COMMENT '所属区域';
+
+

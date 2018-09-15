@@ -4,7 +4,7 @@ package com.funbox.project.core;
  * 项目常量
  */
 public final class ProjectConstant {
-    public static final String BASE_PACKAGE = "com.funbox.project";//项目基础包名称，根据自己公司的项目修改
+    public static final String BASE_PACKAGE = "com.langdong";//项目基础包名称，根据自己公司的项目修改
 
     public static final String MODEL_PACKAGE = BASE_PACKAGE + ".model";//Model所在包
     public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".dao";//Mapper所在包

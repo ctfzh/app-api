@@ -18,15 +18,27 @@ import static com.funbox.project.core.ProjectConstant.*;
  */
 public class CodeGenerator {
     //JDBC配置，请修改为你项目的实际配置
-//    private static final String JDBC_URL = "jdbc:mysql://192.168.0.232:3306/sanquan";
+    private static final String JDBC_URL = "jdbc:mysql://172.16.100.105:3306/yj_trademark";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "qcc@123";
+    private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+
+    //第二数据源
+//    private static final String JDBC_URL = "jdbc:mysql://172.16.100.105:3306/yj_tm_data";
 //    private static final String JDBC_USERNAME = "root";
-//    private static final String JDBC_PASSWORD = "Sanquan2018!";
+//    private static final String JDBC_PASSWORD = "qcc@123";
 //    private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
 
-    private static final String JDBC_URL = "jdbc:oracle:thin:@60.205.57.200:1521:orcl";
-    private static final String JDBC_USERNAME = "cms_master";
-    private static final String JDBC_PASSWORD = "sAnquan**bj01";
-    private static final String JDBC_DIVER_CLASS_NAME = "oracle.jdbc.driver.OracleDriver";
+    //开放搜素映射库数据源
+//    private static final String JDBC_URL = "jdbc:mysql://qccip-tmdata-public.mysql.rds.aliyuncs.com/qccip_os_mapping?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false";
+//    private static final String JDBC_USERNAME = "qccip_os_read";
+//    private static final String JDBC_PASSWORD = "6F1@830FA24!394";
+//    private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+
+//    private static final String JDBC_URL = "jdbc:oracle:thin:@60.205.57.200:1521:orcl";
+//    private static final String JDBC_USERNAME = "cms_master";
+//    private static final String JDBC_PASSWORD = "sAnquan**bj01";
+//    private static final String JDBC_DIVER_CLASS_NAME = "oracle.jdbc.driver.OracleDriver";
 
     private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
     private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";//模板位置
@@ -42,9 +54,9 @@ public class CodeGenerator {
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
 
     public static void main(String[] args) {
-        String tableName = "app_invoice";
+//        String tableName = "app_upgrades_version";
         //生成controller和service
-       genCode("mt_mdse_type");
+        genCode("t_picture_search_data");
         //只生成dao层内容
 //        genModelAndMapper(tableName, null);
 
@@ -71,6 +83,7 @@ public class CodeGenerator {
      * @param modelName 自定义的 Model 名称
      */
     public static void genCodeByCustomModelName(String tableName, String modelName) {
+        modelName = tableNameConvertUpperCamel(tableName.replace("t_",""));
         genModelAndMapper(tableName, modelName);
         genService(tableName, modelName);
         genController(tableName, modelName);
@@ -192,8 +205,8 @@ public class CodeGenerator {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-            //cfg.getTemplate("controller-restful.ftl").process(data, new FileWriter(file));
-            cfg.getTemplate("controller.ftl").process(data, new FileWriter(file));
+//            cfg.getTemplate("controller-restful.ftl").process(data, new FileWriter(file));
+            cfg.getTemplate("controller-restful.ftl").process(data, new FileWriter(file));
 
             System.out.println(modelNameUpperCamel + "Controller.java 生成成功");
         } catch (Exception e) {
